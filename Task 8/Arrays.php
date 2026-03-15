@@ -23,8 +23,18 @@
             [
                 'name' => 'Osama',
                 'Age' => '52',
-                'Address' => ''
-            ], [], []];
+                'Address' => 'Nobariya'
+            ],
+            [
+                'name' => 'Lotfy',
+                'Age' => '63',
+                'Address' => 'Hosayniya'
+            ],
+            [
+                'name' => 'Abbas',
+                'Age' => '72',
+                'Address' => 'Abbasiya'
+            ]];
     ?>
 </body>
 </html>
