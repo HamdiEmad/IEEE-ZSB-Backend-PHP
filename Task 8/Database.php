@@ -7,9 +7,9 @@ class Database{
         $dsn = 'mysql:' . http_build_query($config, '', ';');
         $this->connection = new PDO($dsn, 'root', 'root');
     }
-    public function query($query) {
+    public function query($query, $params = []) {
         $statement = $this->connection->prepare($query);
-        $statement->execute();
+        $statement->execute($params);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
