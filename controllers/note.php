@@ -6,14 +6,9 @@ $db = new Database($config);
 $heading = "Note";
 $currentTransactionId = 134;
 
-$note = $db->query('SELECT * FROM ramadan_mystrey.sobia_king_sales WHERE transaction_id = :id', ['id' => $_GET['transaction_id']]);
+$note = $db->query('SELECT * FROM ramadan_mystrey.sobia_king_sales WHERE transaction_id = :id', [
+    'id' => $_GET['transaction_id']])->findOrFail();
 
-if ($note) {
-    abort();
-}
-
-if ($note['transaction_id'] != $currentTransactionId) {
-    abort(Response::FORBIDDEN);
-}
+authorize($note['transaction_id'] === $currentTransactionId);
 
 require "views/note.view.php";
