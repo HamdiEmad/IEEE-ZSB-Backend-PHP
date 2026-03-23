@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Testing</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script> -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 </head>
 <body class="h-full">
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
