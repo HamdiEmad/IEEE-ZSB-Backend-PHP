@@ -13,6 +13,10 @@
             <p class="mt-6">
                 <a href="/notes/create" class="text-blue-500 hover:underline">Create a note</a>
             </p>
+            <form class="mt-6" method="post">
+                <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                <button class="text-sm text-red-500">Delete</button>
+            </form>
         </div>
     </main>
 <?php require base_path('views/partials/footer.php') ?>
