@@ -29,3 +29,10 @@ function view($path, $attributes = [])
     extract($attributes);
     require base_path("views/" . $path);
 }
+
+function abort($status = Response::FORBIDDEN)
+{
+    http_response_code($status);
+    require base_path("views/{$status}.php");
+    die();
+}
