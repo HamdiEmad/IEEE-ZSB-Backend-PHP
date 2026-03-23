@@ -1,9 +1,8 @@
 <?php
 
-$config = require 'config.php';
+$config = require base_path('config.php');
 $db = new Database($config);
 
-$heading = "Note";
 $currentTransactionId = 134;
 
 $note = $db->query('SELECT * FROM ramadan_mystrey.sobia_king_sales WHERE transaction_id = :id', [
@@ -11,4 +10,7 @@ $note = $db->query('SELECT * FROM ramadan_mystrey.sobia_king_sales WHERE transac
 
 authorize($note['transaction_id'] === $currentTransactionId);
 
-require "views/notes/show.view.php";
+view("notes/show.view.php", [
+    'heading' => 'Note',
+    'note' => $note
+]);
