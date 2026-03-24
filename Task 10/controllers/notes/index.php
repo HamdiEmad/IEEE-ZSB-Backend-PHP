@@ -1,9 +1,9 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require base_path('config.php');
-$db = new Database($config);
+$db = App::resolve(Database::class);
 
 $notes = $db->query('SELECT * FROM ramadan_mystrey.sobia_king_sales WHERE customer_phone like "011-62%";')->get();
 
