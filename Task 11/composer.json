@@ -1,0 +1,16 @@
+{
+    "name": "hamdi/task11",
+    "authors": [
+        {
+            "name": "**********",
+            "email": "*****************************"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\" : "Core/",
+            "Http\\" : "Http/"
+        }
+    }
+}
