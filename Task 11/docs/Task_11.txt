@@ -27,7 +27,8 @@ Task 11 README file
         7- destroy() to completely destroy the session.
 
 (4). Flash Old Form Data to the Session
-    - 
+    - When a user's form submission failed, his data could be automatically refilled from the old one which called old input.
+    - A new helper function called old($key, $default = null) is added to functions class to retreive previously submitted form input from the session.
 
 (5). Automatically Redirect Back Upon Failed Validations
     - 
