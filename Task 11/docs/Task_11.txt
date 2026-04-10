@@ -45,7 +45,8 @@ Task 11 README file
         4- Tracks every thing in a file called composer.json.
 
 (7). Install Two Composer Packages: Collections and PestPHP
-    - 
+    - Collections package is a tool that lets you work with arrays in a more clean, expressive, and powerful way using object-oriented and functional programming concepts.
+    - Pest PHP is a modern testing framework for PHP designed to make writing tests simpler, more readable, and more enjoyable compared to traditional PHPUnit-style tests.
 
 (8). Testing Approaches, Terms, and Considerations
     - 
