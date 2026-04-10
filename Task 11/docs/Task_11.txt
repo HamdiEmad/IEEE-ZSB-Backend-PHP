@@ -1,0 +1,45 @@
+Task 11 README file
+
+(1). Extract a Form Validation Object
+    - The controllers directory is moved to a new directory called Http.
+    - For more readability and modularity, A new class is created called LoginForm with contains the validation logic of the login page.
+    - The class has 2 methods:
+        1- validate($email, $password): It's a boolean function for validating the user dedicated information like email and password and return true if both email & password are valid which means the $errors array is empty.
+        2- errors(): A getter function to retrieve whether there is invalid user information.
+
+(2). Extract an Authenticator Class
+    - Creating a new class named Authenticator to authenticate a certain user to login and out and other functionalities represented in functions:
+        1- attempt($email, $password): tries to login a user after checking his existance in the database and verifying wether the password is correct or not. If all goes true, the user is redirected to the home page.
+        2- login($user): It was a helper function in functions.php and moved to Authenticator class to serve the logic as well as the logout() function.
+    - Add a function called error($field, $message) to LoginForm class to append an error to the errors array in order to get more improvement.
+
+(3). The PRG Pattern (and Session Flashing)
+    - PRG refers to a common approach for hitting controllers and performing form validations.
+    - If a validation fails, we don't return a view but we perform a redirect and that redirect would send the user to a new page where a GET request is performed.
+    - Sessions can be used in this method as a temporary storage and must be flahsed to restore the data flow between requests (POST & GET).
+    - A class called session is made to add all sessions functionalities in one place with multiple functions to perform these functionalities.
+        1- has($key) to check whether a session key exists.
+        2- put($key, $value) for storing data in session.
+        3- get($key, $default = null) to retrieve data from the session.
+        4- flash($key, $value) for storing temporary data.
+        5- unflash() to delete all flash date.
+        6- flush() for clearing all session data.
+        7- destroy() to completely destroy the session.
+
+(4). Flash Old Form Data to the Session
+    - 
+
+(5). Automatically Redirect Back Upon Failed Validations
+    - 
+
+(6). Composer and Free Autoloading
+    - 
+
+(7). Install Two Composer Packages: Collections and PestPHP
+    - 
+
+(8). Testing Approaches, Terms, and Considerations
+    - 
+
+(9). The Next Step in Your Php Journey
+    - 
