@@ -37,7 +37,12 @@ Task 11 README file
     - Updated the router class to add a function for returning a previous Url page for redirecting.
 
 (6). Composer and Free Autoloading
-    - 
+    - Composer in PHP is a dependency manager which is a tool that helps you install, manage, and update external libraries your project depends on.
+    - It has multiple usages:
+        1- Install required libraries.
+        2- Update them easily.
+        3- Handles autoloading.
+        4- Tracks every thing in a file called composer.json.
 
 (7). Install Two Composer Packages: Collections and PestPHP
     - 
