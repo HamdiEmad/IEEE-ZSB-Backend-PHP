@@ -38,7 +38,6 @@ Task 11 README file
 
 (7). Install Two Composer Packages: Collections and PestPHP
     - 
-
 (8). Testing Approaches, Terms, and Considerations
     - 
 
