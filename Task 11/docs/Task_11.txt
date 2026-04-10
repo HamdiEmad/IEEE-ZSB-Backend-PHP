@@ -31,13 +31,17 @@ Task 11 README file
     - A new helper function called old($key, $default = null) is added to functions class to retreive previously submitted form input from the session.
 
 (5). Automatically Redirect Back Upon Failed Validations
-    - 
+    - The controller logic is updated due to redirection so in case of a form submission fails validation, the script immedietly triggers a redirect back to the login page.
+    - A class named ValidationException is created to represent validation failure as an exception.
+    - It allows automatic redirect and flashing via a central handler.
+    - Updated the router class to add a function for returning a previous Url page for redirecting.
 
 (6). Composer and Free Autoloading
     - 
 
 (7). Install Two Composer Packages: Collections and PestPHP
     - 
+
 (8). Testing Approaches, Terms, and Considerations
     - 
 
