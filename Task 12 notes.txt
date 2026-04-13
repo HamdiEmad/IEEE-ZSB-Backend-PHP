@@ -1,0 +1,100 @@
+PHP security
+
+This task specifies many challenges would face the programmer and how to deal with each one.
+
+(1) General tips:
+    - Object-Oriented Programming (OOP) or MVC architecure can't protect your application itself, it is used for organization, readability, maintainability, modularity and more.
+    - Framework does this work itself, It doesn't require you to do it. For example: Laravel provides authentication system and layers of security save a huge effort of doing it manually in native PHP.
+    - Updates are important as the newer version has fixes to multiple issues and bugs or security holes were in the previous one.
+    - Maintain your code by using OOP including functions, files and layers would be helpful in the process of updating a specific function you implemented in the previous version or edit your code after a period of time.
+
+(2) Cross site scripting and filtering inputs
+    - An attacker can write a script in a form field or in your GET request to hack into your database or any kind of unsafe action.
+    - Sanitize filters could be a solution for that as they filter the input and removes any thing that could be a threat or illegal.
+    - For example: to filter an input to reject tags is FILTER_SANITIZE_STRING.
+    - There are many examples for sanitizing filters that filters the input and return anything you expect to be returned from the GET request like numbers, strings or anything else.
+    
+(3) Prevent SQL injection
+    - SQL Injection (SQLi) is a type of security vulnerability in web applications that allows an attacker to interfere with the database queries an application makes.
+    - The programmer have to imagine multiple scenarios of any regular user or even an attacker input and secure his website depending on that.
+    - A GET request mustn't be empty and it shouldn't request for some data that doesn't exist in the database.
+
+(4) Prevent remote file injection
+    - Remote File Injection (RFI) in PHP is a serious security vulnerability where an attacker can make your application include and execute a file from a remote server.
+    - It could be prevented by making an array of allowed pages and show an error message in case the requested page isn't in the array.
+    - It could be fully disabled by editing php.ini file and making "allo_url_include" OFF.
+
+(5) Hashing passwords in right way
+    - Many data like passwords or credit card numbers are sensitive and can't be saved in the database as a plaintext.
+    - Password hashing is the process of converting a password into a fixed, irreversible string (hash) so you never store the actual password in your database.
+    - A string called Salt is added to a password before it is hashed and if the salt is long and random, it makes some  common cracking methods such as Dictionary Attacks and lookup tables ineffective.
+    - password_hash() is a funciton in PHP 5.0 and newer versions, used for hashing passwords using different algorithms and many options to make the decryption process more complex.
+    - password_verify() function is used to ensure that a certain password is equal to password that was encrypted using hashing.
+
+(6) Disable error in production environment
+    - An error in a production environment means something went wrong in your live application (the one real users use), and how you handle it is very different from development.
+    - An attacker can expose many details from the error like file paths, database structure or sensitive logic.
+    - In development, you can show detailed errors (for debugging) whether in production, you should hide errors from users and log them internally.
+
+(7) Disable directory listing using Htaccess
+    - Directory listing (also called directory browsing) is when a web server automatically shows the contents of a folder in the browser instead of loading a normal page.
+    - It can be disabled using a file named .htaccess which is a configuration file that apache reads it and executes its commands.
+    - A line of 'Options -Indexes' is used to prevent listing inside the .htaccess file and you can even show an error message using "ErrorDocument errorCode "msg" ".
+
+(8) Header location redirect
+    - In PHP, header("Location: ...") redirect is used to send the user to another page.
+    - It would be dangerous if the header() function doesn't have die() or exit() function after it to prevent keep excecuting the script even after redirecting process.
+
+(9) Why you should always use HTTPS
+    - HTTPS stands for HyperText Transfer Protocol Secure. It’s the secure version of HTTP, used to safely transfer data between a browser and a website.
+    - in HTTP, data is sent in plain text but in HTTPS, data is encrypted.
+
+(10) Create directories firewall
+    - A firewall is a security system that controls incoming and outgoing network traffic.
+    - It acts like a security guard between your server and the internet
+    - In cpanel for example, using Directory Privacy, you can add a username and a password for some users and add them to Authorized users list.
+
+(11) Protect directory with IP
+    - To protect a directory by IP address in Apache (using .htaccess), you restrict access so only specific IPs can open that folder.
+    - the syntax is like:
+        Order Deny,Allow
+        Deny from all
+        Allow from 'IP address'
+
+(12) Prevent execution of specific files
+    - To prevent execution of specific files in a web server (Apache/PHP), you use server rules to stop certain file types or files from being executed even if they are uploaded or accessed.
+    - There are many ways, the most used are:
+        1- Prevent execution using .htaccess
+            . Block execution of PHP files in a folder
+            . Block specific file types
+            . Alternative: stop execution but allow download
+        2- Prevent execution in upload folders (BEST PRACTICE)
+
+(13) Securing uploads
+    - Securing uploads in PHP is one of the most important security topics, because file upload bugs often lead to full server takeover (RCE).
+    - Best practices for securing in PHP:
+        . NEVER trust file extension
+        . Allow only specific file types (whitelist)
+        . Validate MIME type (important)
+        . Rename uploaded files (VERY important)
+        . Store uploads outside web root (BEST practice)
+        . Disable execution in uploads folder
+        . Limit file size
+        . Use secure upload flow
+
+(14) Fix log errors
+    - In PHP, logging errors means saving errors into a file (or system log) instead of showing them to users. This is essential in production for security and debugging.
+
+(15) Validation on Back-end
+    - Back-end validation means checking and verifying user input on the server (PHP, Node.js, etc.) before processing or storing it in the database.
+    - Front-end validation can be bypassed, but back-end cannot.
+    - Also, Back-end validation protects you from:
+        . SQL Injection attempts
+        . Invalid or malicious data
+        . Broken business logic
+        . Direct API attacks (Postman, bots)
+
+(16) Prevent session fixation
+    - Session fixation is an attack where a hacker forces or tricks a user into using a session ID that the attacker already knows, then hijacks the user’s session after login.
+    - There is a valid solution using a function called session_regenerate_id().
+    - This function updates session id with a new one without changing any other information about the current session related to the website. 
