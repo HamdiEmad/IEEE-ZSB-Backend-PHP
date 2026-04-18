@@ -1,0 +1,69 @@
+Task 15 Research 
+
+(1) Inheritance
+    - It makes code more clean and verify resuability principle and organize relationships between parent and child classes.
+    - Example: 
+        class Employee {
+          private $baseSalary;
+          public function getSalary() {return $this->$salary}
+        }
+        class hourlyEmployee extend Employee {
+          private $hourSalary;
+        }
+        $H_emp = new hourlyEmployee();
+        echo $H_emp->getSalary();
+
+(2) The final Keyword
+    - When final keyword is used with a class, It makes the class can't be Inherited and when using with a function, It can't be overriden.
+    - It can be used to protect the class logic from being changed or to prevent breaking the core functionality of the class.
+    - Example:
+        final class Laptop {
+
+        }
+        class ROV {
+            final public cameraTest() {
+                echo 'Camera is working now';
+            }
+        }
+
+
+(3) Overriding Methods
+    - Override a method means to rewrite the same method from a parent class in a child class but with some changes in the implementation.
+    - Example:
+        class Human {
+            public $name;
+            public function eat() {
+                echo 'I am eating';
+            }
+        }
+        class Male extend Human{
+            public function getName() {
+                parent::eat();
+                echo 'Gebna Estanboly';
+            }
+        }
+
+(4) Abstract Class vs. Interface
+    - an Abstract class can have both abstract methods which is empty and non-abstract(implemented or concrete) methods whether an Interface has just abstract methods.
+    - Abstract classes can have variables and constants, but Interfaces may only have constants.
+    - A class can implement multiple interfaces:
+        class hourlyEmployee implement Employee, Human, Male {
+
+        }
+
+(5) Polymorphism
+    - Polymorphism can be defined as means many forms which describes the ability of making different behaviors of the same method which can be defined as multiple implementations.
+    - Example: 
+        class male {
+            public function eat() {
+                echo 'Koshary eldemery';
+            }
+        }
+        class female {
+            public function eat() {
+                echo 'Pizza elganayney';
+            }
+        }
+        function eatFood($human) {
+            $human->eat();
+        }
