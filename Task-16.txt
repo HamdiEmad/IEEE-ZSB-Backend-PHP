@@ -1,0 +1,22 @@
+(1). Traits
+     - Traits are a way to reuse code from multiple.
+     - Traits let you use some functions from different sources because PHP can’t inherit from more than one class.
+     - Traits is like a toolbox you can plug in anywhere.
+
+(2). Namespaces
+    - Namespace is like a folder for your classes.
+    - Namespace helps avoiding conflicts when two classes have the same name.
+    - Example: 
+        - App\Models\User
+        - App\Controllers\User
+
+(3). Autoloading
+    - Autoloading means PHP automatically loads files when needed.
+    - To do that manually, it is a must to write 'require' for every file. 
+    - PHP does it when using a class.
+
+(4). __get and __set
+    - They are special functions that run automatically when assigning a value to a property (mutator) or getting a value of a property (accessor).
+
+(5). Static Methods & Properties
+    - static makes the method or property belongs to the class itself not an instance of it.
