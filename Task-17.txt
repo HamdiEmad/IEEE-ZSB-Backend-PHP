@@ -1,0 +1,27 @@
+Task 17 Research questions
+
+(1). The MVC Pattern
+    - MVC stands for Model-View-Controller which is a high level design pattern.
+    - The Model is responsible for managing databases and handling logic.
+    - The View displays the data to the user and hanldes interfaces.
+    - The Controller is for the requests, forms and any stuff of communication between sides, communicates with the Model for processing the data and chooses which view to display.
+
+
+(2). Routing
+    - Router is responible for the decision of which code should be hanlding a specific request.
+    - Each URL can be considered a road, handler controller a destination and the router is the officer managing and directing the traffic.
+
+(3). The front controller
+    - It is like the front door of a mall or a building but it is only the entry point of that building.
+    - Every request goes to index.php, then the index.php file decides what action should be taken using a router and it forwards it to the right controller.
+    - In case of many .php files, the handling process is complicated and depends on each file itself and the logic also is confusing.
+    - The front controller is better as it is like a central place for handling requests and easier to manage security.
+
+(4). Clean URLs
+    - Clean URLs are used as they are easier to understand for both users and machines.
+    - It is helpful for search engines when it contains meaningful words and it reflects the page content.
+
+(5). Separation of Concerns
+    - Putting SQL queries inside HTML code is considered a horrible idea as it breaks the separation principle (SOLID principles).
+    - Each part of the system should has a single responsibility.
+    - It makes it harder to maintain and makes it risk of SQL injection.
