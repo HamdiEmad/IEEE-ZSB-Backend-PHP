@@ -1,0 +1,29 @@
+    Task 19 Research
+
+    (1). MVC pattern
+        - The Model is the only part of the application that should be allowed to talk directly to the database.
+        - The Model centralizes data logic and it makes it easy for maintenance.
+
+    (2). Database passwords
+        - It is essential to store sensitive information in a separate configuration file for several reasons:
+            1- Security: They can be leaked easily if they were hardcoded and exist in a public repository.
+            2- It keeps responsibilities clear and every part of the code has its own functionality (config file -> environment settings)
+            3- It makes it flexable when using different environments.
+
+    (3). PDO in PHP
+        - PDO is a PHP Data Object which is a database layer in PHP that provides Object Oriented Interface for dealing with different objects.
+        - mysqli supports only MySQL whether PDO supports multiple databases.
+        - PDO has built-in support for prepared statements, which help prevent SQL injection.
+
+    (4). Prepared Statements
+        - Prepared statements protect your website from SQL Injection by separating SQL code from user input, so user data is never treated as executable SQL.
+        - It bound and separate user input within placeholders and sent it separately.
+        
+    (5). Query a database
+        - Examples of fetching a single row:
+            1- Getting the full information about an employee depending on his ID.
+            2- Viewing bank account details depending on your login info (name, pass for example).
+            3- Student full grades based on student ID.
+        - Examples of fetching multiple rows:
+            1- Getting all customers from a specific country.
+            2- All students within a specific department in collage.
