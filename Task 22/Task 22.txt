@@ -1,0 +1,173 @@
+Task 22 Research
+
+(1). Blade Templates in Laravel
+    - Blade Templates in Laravel are basically used to separate between the logic (written in PHP) and the GUI of the application (HTML, CSS, .....) in organized and easy way.
+    - An example of an old vesion of code before using Blade Templates:
+        <?php if ($isAdmin): ?>
+            <p>Welcome, Admin!</p>
+        <?php endif; ?>
+    - After using Blade Templates:
+        @if($isAdmin)
+            <p>Welcome, Admin!</p>
+        @endif
+    - It can be used also to prevent repetition in code like writing partials and passing variables from controller to GUI easily.
+    - most used Blade commands:
+        - {{ $variable }} => Echoes a variable and automatically runs it through PHP's.
+        - {!! $variable !!} => Echoes a variable without escaping it. Use this only when you trust the source.
+        - @if / @elseif / @else / @endif => Standard conditional statement.
+        - @unless / @endunless => Inverse of @if. It executes if the condition is false (equivalent to if (! $condition)).
+        - @isset / @endisset => Shorthand for PHP's if (isset($variable)).
+        - @empty / @endempty => Use: Shorthand for PHP's if (empty($variable)).
+        - @foreach / @endforeach => Loops through arrays or collections. (Inside the loop, you also get access to a powerful $loop variable to check if it's the first or last iteration).
+        - @forelse / @empty / @endforelse => The ultimate loop. It loops through an array, but automatically falls back to the @empty block if the array has no items.
+        - @extends('layout.name') => Tells Blade that this child view "inherits" a master layout view.
+        - @yield('section_name') => Used in a master layout to define a placeholder where child views can inject content.
+        - @section('section_name') / @endsection => Used in a child view to wrap the content that should be injected into the master layout's @yield.
+        - @include('view.name') => Includes a partial blade view inside the current view (great for reusable elements like Navbars or Footers).
+        - @csrf => Generates a hidden HTML input field containing a CSRF security token. Mandatory for any POST, PUT, or DELETE forms in Laravel.
+        - @auth / @endauth => Content inside this block will only show if the user is logged in.
+        - @guest / @endguest => Content inside this block will only show if the user is not logged in.
+
+(2) Object-Relational Mapping
+    - ORM is a concept that makes dealing with databases like objects instead of typing SQL code.
+    - Instead of typing "SELECT * from users", it becomes "$User = User::all();", the ORM translates this line of code to SQL.
+    - It is called Object-Relational Mapping as it deals with objects (Object), Relational due to relational databases like MySQL or PostgreSQL and Mapping for linking the object and the table.
+    - It is easier in reading, reducing SQL lines of code, decreasing error rate, easy to deal with relations between different tables and easy to maintain.
+    - It might be slower than the same logic using SQL lines.
+
+(3). Facade Design Pattern
+    - Facade is one of the structural design patterns providing a simple interface to handle complicated system components(mostly objects) easly.
+    - It is like handling with a system as a single object instead of dealing with its components individually.
+    - An example:
+        class RAM {
+            public function load(string $data) { ... }
+        }
+        class CPU {
+            public function process(string $data) { ... }
+        }
+
+        class computer {
+            private CPU $cpu;
+            privare RAM $ram;
+            public function __construct() {
+                $this->cpu = new CPU();
+                $this->ram = new RAM();
+            }
+            public function run(string $input) {
+                $this->ram->load($input);
+                $this->cpu->process($input);
+            }
+        }
+
+(4). Factory Design Pattern
+    - The Factory Design Pattern is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+    - Instead of calling new ClassName() directly inside your application logic, you call a "Factory" method to create the object for you.
+    - An example:
+        interface Transport {
+            public function deliver(): string;
+        }
+
+        class Truck implements Transport {
+            public function deliver(): string {
+                return "Delivering by land in a box.";
+            }
+        }
+
+        class Ship implements Transport {
+            public function deliver(): string {
+                return "Delivering by sea in a container.";
+            }
+        }
+
+        class LogisticsFactory {
+            public static function createTransport(string $type): Transport {
+                return match (strtolower($type)) {
+                    'road' => new Truck(),
+                    'sea'  => new Ship(),
+                    default => throw new Exception("Unknown transport type: $type"),
+                };
+            }
+        }
+    - Factory design pattern provide single responsibility principle and Open-Closed principle but the code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern.
+
+(5). SOLID principles
+    - The SOLID principles are five design rules that make software development more understandable, flexible, and maintainable.
+    - S => Single Responsibility Principle (SRP) : A class should have only one reason to change. It should do exactly one job.
+        // An example
+        class User {
+            public string $name;
+            public string $email;
+        }
+        class UserRepository {
+            public function save(User $user): void {
+                echo "Saving {$user->name} to the database.\n";
+            }
+        }
+    - O => Open/Closed Principle (OCP)
+    Software entities should be open for extension, but closed for modification. You should be able to add new functionality without changing existing code.
+    // An example
+    interface PaymentMethod {
+        public function process(float $amount): void;
+    }
+
+    class StripePayment implements PaymentMethod {
+        public function process(float $amount): void { /* Stripe logic */ }
+    }
+
+    class PayPalPayment implements PaymentMethod {
+        public function process(float $amount): void { /* PayPal logic */ }
+    }
+
+    class OrderProcessor {
+        public function processOrder(float $amount, PaymentMethod $method) {
+            $method->process($amount);
+        }
+    }
+
+    - l => Liskov Substitution Principle (LSP)
+    Subclasses should be substitutable for their base classes. If you replace a parent class with a child class, the code shouldn't break.
+    // An example
+    interface Walkable { public function walk(): void; }
+    interface Flyable { public function fly(): void; }
+
+    class Sparrow implements Walkable, Flyable {
+        public function walk(): void { echo "Walking..."; }
+        public function fly(): void { echo "Flying..."; }
+    }
+
+    class Ostrich implements Walkable {
+        public function walk(): void { echo "Walking..."; }
+    }
+
+    - I => Interface Segregation Principle (ISP)
+    A client should never be forced to implement an interface it doesn't use. Many small, specific interfaces are better than one fat, generic interface.
+    // An example
+    interface Workable { public function work(): void; }
+    interface Feedable { public function eat(): void; }
+
+    class HumanWorker implements Workable, Feedable {
+        public function work(): void {}
+        public function eat(): void {}
+    }
+
+    class RobotWorker implements Workable {
+        public function work(): void {}
+    }
+
+    - D => Dependency Inversion Principle (DIP)
+    Depend on abstractions, not concretions. High-level code shouldn't depend directly on low-level tools; both should depend on interfaces.
+    // An example
+    interface DatabaseConnection { public function connect(): void; }
+    
+    class MySQLConnection implements DatabaseConnection {
+        public function connect(): void { /* ... */ }
+    }
+    
+    class PasswordReminder {
+        private DatabaseConnection $dbConnection;
+    
+        // Depend on the interface, not the concrete MySQL class
+        public function __construct(DatabaseConnection $dbConnection) {
+            $this->dbConnection = $dbConnection;
+        }
+    }
